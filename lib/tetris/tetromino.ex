@@ -26,6 +26,10 @@ defmodule Tetris.Tetromino do
     %{tetro| rotation: rotate_degrees(tetro.rotation)}
   end
   
+  def points(tetro) do
+    [tetro.location]
+  end
+  
   defp random_shape do
     ~w[i t o l j z s]a
     |> Enum.random
