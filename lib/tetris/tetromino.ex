@@ -29,6 +29,7 @@ defmodule Tetris.Tetromino do
   def show(tetro) do
     tetro
     |> points
+    |> Points.rotate(tetro.rotation)
     |> Points.move(tetro.location)
     |> Points.add_shape(tetro.shape)
   end
