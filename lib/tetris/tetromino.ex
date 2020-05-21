@@ -11,24 +11,24 @@ defmodule Tetris.Tetromino do
   end
 
   def right(tetro) do
-    %{tetro|location: Point.right(tetro.location)}
+    %{tetro | location: Point.right(tetro.location)}
   end
 
   def left(tetro) do
-    %{tetro|location: Point.left(tetro.location)}
+    %{tetro | location: Point.left(tetro.location)}
   end
 
   def down(tetro) do
-    %{tetro| location: Point.down(tetro.location)}
+    %{tetro | location: Point.down(tetro.location)}
   end
 
   def rotate(tetro) do
-    %{tetro| rotation: rotate_degrees(tetro.rotation)}
+    %{tetro | rotation: rotate_degrees(tetro.rotation)}
   end
 
   defp random_shape do
     ~w[i t o l j z s]a
-    |> Enum.random
+    |> Enum.random()
   end
 
   defp rotate_degrees(270) do

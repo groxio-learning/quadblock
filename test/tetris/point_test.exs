@@ -1,6 +1,6 @@
 defmodule Tetris.PointTest do
-use ExUnit.Case
-alias Tetris.Point
+  use ExUnit.Case
+  alias Tetris.Point
 
   # Author: github: @thejohncotton
   describe "origin/0" do
@@ -15,14 +15,14 @@ alias Tetris.Point
     test "returns a new point tuple with a decremented x value" do
       point = Point.origin()
       expected = {-1, 0}
-      actual = point |> Point.left
+      actual = point |> Point.left()
       assert actual == expected
     end
 
     test "returns a new point tuple with an unchanged y value" do
       point = Point.origin()
       {_x, expected} = point
-      {_x, actual} = point |> Point.left
+      {_x, actual} = point |> Point.left()
       assert actual == expected
     end
   end
@@ -31,14 +31,14 @@ alias Tetris.Point
     test "returns a new point tuple with an incremented x value" do
       point = Point.origin()
       expected = {1, 0}
-      actual = point |> Point.right
+      actual = point |> Point.right()
       assert actual == expected
     end
 
     test "returns a new point tuple with an unchanged y value" do
       point = Point.origin()
       {_x, expected} = point
-      {_x, actual} = point |> Point.right
+      {_x, actual} = point |> Point.right()
       assert actual == expected
     end
   end
@@ -47,14 +47,14 @@ alias Tetris.Point
     test "returns a new point tuple with an incremented y value" do
       point = Point.origin()
       expected = {0, 1}
-      actual = point |> Point.down
+      actual = point |> Point.down()
       assert actual == expected
     end
 
     test "returns a new point tuple with an unchanged x value" do
       point = Point.origin()
       {expected, _y} = point
-      {actual, _y} = point |> Point.down
+      {actual, _y} = point |> Point.down()
       assert actual == expected
     end
   end
