@@ -1,17 +1,18 @@
-defmodule Tetris.TertrominoTest do
+defmodule Tetris.TetrominoTest do
   use ExUnit.Case
   alias Tetris.Tetromino
 
   # Author: github - @brettwise
   describe "new" do
-    test "passing no arguments returns a Tetrimino struct w/ nil values" do
+    @tag :focus
+    test "passing no arguments returns a Tetromino struct w/ nil values" do
       actual = Tetromino.new()
       expected = %Tetromino{}
 
       assert actual == expected
     end
 
-    test "passing a keyword lists of Tetrimino keys and values returns a struct with those keys and values" do
+    test "passing a keyword lists of Tetromino keys and values returns a struct with those keys and values" do
       actual = Tetromino.new(shape: :i, rotation: 270, location: {1, 1})
       expected = %Tetromino{shape: :i, rotation: 270, location: {1, 1}}
 
@@ -20,7 +21,7 @@ defmodule Tetris.TertrominoTest do
   end
 
   describe "new_random" do
-    test "returns a tetrimino struct with one of seven possible shapes" do
+    test "returns a tetromino struct with one of seven possible shapes" do
       new_random = Tetromino.new_random()
       possible_shapes = [:i, :t, :o, :l, :j, :z, :s]
 
