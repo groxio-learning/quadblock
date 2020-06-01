@@ -34,33 +34,33 @@ defmodule Tetris.Tetromino do
     |> Points.add_shape(tetro.shape)
   end
     
-  def points(%{shape: :l}=tetro) do
+  def points(%{shape: :l}) do
     [
       {2, 1},
       {2, 2},
       {2, 3}, {3, 3}
     ] 
   end
-  def points(%{shape: :j}=tetro) do
+  def points(%{shape: :j}) do
     [
               {3, 1},
               {3, 2},
       {2, 3}, {3, 3}, 
     ] 
   end
-  def points(%{shape: :s}=tetro) do
+  def points(%{shape: :s}) do
     [
               {2, 2}, {3, 2},
       {1, 3}, {2, 3}
     ] 
   end
-  def points(%{shape: :z}=tetro) do
+  def points(%{shape: :z}) do
     [
       {1, 2}, {2, 2},
               {2, 3}, {3, 3}
     ] 
   end
-  def points(%{shape: :i}=tetro) do
+  def points(%{shape: :i}) do
     [
       {2, 1},
       {2, 2},
@@ -68,13 +68,13 @@ defmodule Tetris.Tetromino do
       {2, 4}
     ] 
   end
-  def points(%{shape: :o}=tetro) do
+  def points(%{shape: :o}) do
     [
       {2, 2}, {3, 2},
       {2, 3}, {3, 3}
     ] 
   end
-  def points(%{shape: :t}=tetro) do
+  def points(%{shape: :t}) do
     [
       {1, 2}, {2, 2}, {3, 2},
               {2, 3}
@@ -92,4 +92,7 @@ defmodule Tetris.Tetromino do
   defp rotate_degrees(n) do
     n + 90
   end
+  
+  def maybe_move(_old, new, true=_valid), do: new
+  def maybe_move(old, _new, false=_valid), do: old
 end
