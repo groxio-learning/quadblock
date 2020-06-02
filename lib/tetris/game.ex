@@ -24,7 +24,7 @@ defmodule Tetris.Game do
     valid = 
       new
       |> Tetromino.show
-      |> Points.valid?
+      |> Points.valid?(game.junkyard)
 
     {old, new, valid}
   end
@@ -38,6 +38,7 @@ defmodule Tetris.Game do
   def move_down_or_merge(game, _old, new, true=_valid) do
     %{game| tetro: new}
     |> show
+    |> inc_score(1)
   end
   
   def move_down_or_merge(game, old, _new, false=_valid) do
@@ -73,5 +74,9 @@ defmodule Tetris.Game do
   
   def show(game) do
     %{game| points: Tetromino.show(game.tetro) }
+  end
+  
+  def inc_score(game, value) do
+    %{game| score: game.score + value }
   end
 end

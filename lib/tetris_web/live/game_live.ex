@@ -18,6 +18,7 @@ defmodule TetrisWeb.GameLive do
     <section class="phx-hero">
       <div phx-window-keydown="keystroke">
       <h1>Welcome to Tetris</h1>
+      <h2>Score: <%= @game.score %></h2>
       <%= render_board(assigns) %>
       <pre> 
         <%= inspect @game %>
@@ -95,5 +96,8 @@ defmodule TetrisWeb.GameLive do
   def handle_event("keystroke", %{"key" => "ArrowLeft"}, socket) do
     {:noreply, socket |> left}
   end
-
+  
+  def handle_event("keystroke", _, socket) do
+    {:noreply, socket}
+  end
 end
