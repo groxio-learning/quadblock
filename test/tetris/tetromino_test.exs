@@ -4,7 +4,6 @@ defmodule Tetris.TetrominoTest do
 
   # Author: github - @brettwise
   describe "new" do
-    @tag :focus
     test "passing no arguments returns a Tetromino struct w/ nil values" do
       actual = Tetromino.new()
       expected = %Tetromino{}
@@ -21,6 +20,7 @@ defmodule Tetris.TetrominoTest do
   end
 
   describe "new_random" do
+    @tag :focus
     test "returns a tetromino struct with one of seven possible shapes" do
       new_random = Tetromino.new_random()
       possible_shapes = [:i, :t, :o, :l, :j, :z, :s]
