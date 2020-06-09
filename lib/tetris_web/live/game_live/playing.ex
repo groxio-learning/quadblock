@@ -6,7 +6,7 @@ defmodule TetrisWeb.GameLive.Playing do
   
   def mount(_params, _session, socket) do
     if connected?(socket) do 
-      :timer.send_interval(500, :tick)
+      :timer.send_interval(50, :tick)
     end
     
     {:ok, new_game(socket)}
@@ -61,8 +61,19 @@ defmodule TetrisWeb.GameLive.Playing do
     assign(socket, game: Game.down(game))
   end
   
+  def maybe_end_game(%{assigns: %{game: %{game_over: true}}}=socket) do
+    socket
+    |> push_redirect(to: "/game/over")
+  end
+  def maybe_end_game(socket), do: socket
+  
   def handle_info(:tick, socket) do
-    {:noreply, socket |> down}
+    {
+      :noreply, 
+      socket 
+      |> down
+      |> maybe_end_game
+    }
   end
   
   def handle_event("keystroke", %{"key" => key}, socket) when key in @rotate_keys do
