@@ -4,7 +4,7 @@ defmodule Tetris.PointTest do
 
   # Author: github: @thejohncotton
   describe "origin/0" do
-    @tag :focus
+
     test "creates a point tuple with coordinates 0,0" do
       expected = {0, 0}
       actual = Point.origin()
@@ -13,6 +13,7 @@ defmodule Tetris.PointTest do
   end
 
   describe "left/1" do
+    @tag :focus
     test "returns a new point tuple with a decremented x value" do
       point = Point.origin()
       expected = {-1, 0}
