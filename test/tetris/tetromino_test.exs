@@ -73,4 +73,12 @@ defmodule Tetris.TertrominoTest do
       assert actual == expected
     end
   end
+
+  describe "points/1" do
+    test "returns a set of points given a tetromino" do
+      tetro = Tetromino.new(shape: :l, rotation: 0, location: {5, 1})
+      expected = tetro.location
+      actual = Tetromino.points(tetro)
+    end
+  end
 end
